@@ -19,15 +19,15 @@ public class DubboConsumerTest{
 		HelloServiceConsumer service = (HelloServiceConsumer)ctx.getBean("helloServiceConsumer");
 		String result = service.sayHello("张三");
 		System.out.print(result);
-//		synchronized (DubboConsumerTest.class) {
-//			while (true) {
-//				try {
-//					DubboConsumerTest.class.wait();
-//				} catch (InterruptedException e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		}
+		synchronized (DubboConsumerTest.class) {
+			while (true) {
+				try {
+					DubboConsumerTest.class.wait();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 	}
 
 }
