@@ -11,23 +11,14 @@ public class DubboConsumerTest{
 	
 	@Before
 	public void init(){
-		ctx = new ClassPathXmlApplicationContext("classpath*:spring/spring.xml");
+		ctx = new ClassPathXmlApplicationContext("classpath:application.xml");
 	}
 	
 	@Test
-	public void testConsumer(){
+	public void testConsumer() throws Exception{
 		HelloServiceConsumer service = (HelloServiceConsumer)ctx.getBean("helloServiceConsumer");
 		String result = service.sayHello("张三");
 		System.out.print(result);
-		synchronized (DubboConsumerTest.class) {
-			while (true) {
-				try {
-					DubboConsumerTest.class.wait();
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-		}
 	}
 
 }
