@@ -6,9 +6,13 @@
 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
 http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
-
-	<context:component-scan base-package="com.chelsea"/>
 	
-	<dubbo:annotation />
+	<context:property-placeholder location="classpath:application.properties" />
+
+	<dubbo:annotation package="com.chelsea" />
+	
+	<dubbo:application name="${dubbo.application.name}" />
+	
+	<dubbo:registry address="${dubbo.registry.address}" />
 	
 </beans>
