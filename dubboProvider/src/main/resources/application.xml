@@ -7,13 +7,15 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
 	<context:property-placeholder location="classpath:application.properties" />
-
-	<dubbo:annotation package="com.chelsea" />
+	
+	<context:component-scan base-package="com.chelsea" />
 
 	<dubbo:application name="${dubbo.application.name}" />
 
 	<dubbo:registry address="${dubbo.registry.address}" />
 
 	<dubbo:protocol port="${dubbo.protocol.port}" />
+	
+	<dubbo:service interface="com.chelsea.dubboInterface.HelloService" ref="helloService" token="true" timeout="10000"/>
 
 </beans>
